@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "ESNext",
+    "outDir": "build",
+    "sourceMap": true,
+    "strict": true,
+    "allowJs": true,
+    "esModuleInterop": true,
+    "rootDir": "./src",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "skipLibCheck": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "useUnknownInCatchVariables": false,
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "types": ["node", "express"]
+  },
+  "ts-node": {
+    "esm": true
+  },
+  "include": ["./src/**/*.ts"],
+  "exclude": ["node_modules", "build"]
+}

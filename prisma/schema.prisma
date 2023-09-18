@@ -1,0 +1,31 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model quotation_request {
+  id                       Int      @id @default(autoincrement())
+  quotation_date           DateTime @db.Date
+  quotation_number         Int?
+  client_name              String
+  client_email             String?
+  client_adress            String?
+  quotation_description    String?
+  project_preview          String?
+  quotation_total_amount   Int
+  quotation_method_payment String?
+  userId                   Int
+  users                    users    @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "quotation_request_userid_foreign")
+}
+
+model users {
+  id                Int                 @id @default(autoincrement())
+  email             String              @unique(map: "users_email_unique")
+  name              String
+  password          String
+  quotation_request quotation_request[]
+}
