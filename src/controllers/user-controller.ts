@@ -1,7 +1,7 @@
 import httpStatus from 'http-status';
 import { Request, Response } from 'express';
-import userService from '../service/user-service';
-import authService from '../service/auth-service';
+import userService from '../service/user-service.ts';
+import authService from '../service/auth-service.ts';
 
 export async function postUser(req: Request, res: Response) {
   const { name, email, password } = req.body;
@@ -21,9 +21,9 @@ export async function postUser(req: Request, res: Response) {
 export async function signIn(req: Request, res: Response) {
   const { email, password } = req.body;
   try {
-    const result = await authService.signIn(email, password);
+    const result = await authService.signIn({ email, password });
     return res.status(httpStatus.OK).send(result);
   } catch (error) {
-    return res.status(httpStatus.UNAUTHORIZED).send({});
+    return res.status(httpStatus.UNAUTHORIZED).send(error.message);
   }
 }

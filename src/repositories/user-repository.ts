@@ -1,4 +1,4 @@
-import prisma from '../configs/database-connection.tsx';
+import prisma from '../configs/database-connection.ts';
 import { Prisma, Session } from '@prisma/client';
 
 async function createUser(data: Prisma.UsersCreateInput) {
