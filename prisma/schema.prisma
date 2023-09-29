@@ -9,7 +9,7 @@ datasource db {
 
 model Quotation_request {
   id                       Int             @id @default(autoincrement())
-  quotation_date           DateTime        @default(now()) @db.Date
+  quotation_date           DateTime?       @default(now()) @db.Date
   quotation_number         Int?
   client_name              String
   client_email             String?
