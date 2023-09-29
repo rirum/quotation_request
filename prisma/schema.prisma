@@ -8,8 +8,8 @@ datasource db {
 }
 
 model Quotation_request {
-  id                       Int      @id @default(autoincrement())
-  quotation_date           DateTime @default(now()) @db.Date
+  id                       Int             @id @default(autoincrement())
+  quotation_date           DateTime        @default(now()) @db.Date
   quotation_number         Int?
   client_name              String
   client_email             String?
@@ -18,10 +18,18 @@ model Quotation_request {
   project_preview          String?
   quotation_total_amount   Int
   quotation_method_payment String?
+  status                   QuotationStatus @default(ORCAMENTO)
   userId                   Int
-  users                    Users    @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "quotation_request_userid_foreign")
+  users                    Users           @relation(fields: [userId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "quotation_request_userid_foreign")
 
   @@map("quotation_request")
+}
+
+enum QuotationStatus {
+  VENDA
+  ORCAMENTO
+  LISTA_DE_ESPERA
+  CANCELADA
 }
 
 model Users {

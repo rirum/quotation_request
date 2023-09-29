@@ -1,4 +1,4 @@
-import { Prisma } from '@prisma/client';
+import { Prisma, QuotationStatus } from '@prisma/client';
 import quotationRepository from '../repositories/quotation-repository.ts';
 import prisma from '../configs/database-connection.ts';
 
@@ -31,6 +31,7 @@ export type QuoteType = {
   quotation_total_amount: number;
   quotation_method_payment?: string;
   userId: number;
+  status: QuotationStatus;
 };
 
 const quotationService = {
