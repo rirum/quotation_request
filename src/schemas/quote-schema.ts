@@ -9,6 +9,12 @@ export const QuoteSchema = Joi.object<QuoteType>({
   client_address: Joi.string(),
   quotation_description: Joi.string(),
   project_preview: Joi.string(),
-  quotation_total_amount: Joi.number().required(),
+  quotation_total_amount: Joi.string().required(),
   quotation_method_payment: Joi.string(),
+  status: Joi.string().valid(
+    'VENDA',
+    'ORCAMENTO',
+    'LISTA_DE_ESPERA',
+    'CANCELADA'
+  ),
 });

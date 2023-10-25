@@ -28,7 +28,7 @@ export type QuoteType = {
   client_address?: string;
   quotation_description?: string;
   project_preview?: string;
-  quotation_total_amount: number;
+  quotation_total_amount: string;
   quotation_method_payment?: string;
   userId: number;
   status: QuotationStatus;

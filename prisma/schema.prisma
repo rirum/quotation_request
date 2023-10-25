@@ -16,7 +16,7 @@ model Quotation_request {
   client_address           String?
   quotation_description    String?
   project_preview          String?
-  quotation_total_amount   Int
+  quotation_total_amount   String
   quotation_method_payment String?
   status                   QuotationStatus @default(ORCAMENTO)
   userId                   Int
