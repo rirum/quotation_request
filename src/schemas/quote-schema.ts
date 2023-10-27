@@ -2,7 +2,7 @@ import Joi from 'joi';
 import { QuoteType } from '../service/quotation-service.ts';
 
 export const QuoteSchema = Joi.object<QuoteType>({
-  quotation_date: Joi.date().iso(),
+  quotation_date: Joi.date(),
   quotation_number: Joi.number(),
   client_name: Joi.string().required(),
   client_email: Joi.string().email(),
