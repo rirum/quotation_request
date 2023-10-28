@@ -1,5 +1,8 @@
 import { Router } from 'express';
-import { postQuotation } from '../controllers/quotation-controller.ts';
+import {
+  getLastQuotationNumber,
+  postQuotation,
+} from '../controllers/quotation-controller.ts';
 import { authenticateToken } from '../middlewares/authentication-request.ts';
 import { validateBody } from '../middlewares/validation-middleware.ts';
 import { QuoteSchema } from '../schemas/quote-schema.ts';
@@ -11,5 +14,6 @@ quotationRouter.post(
   validateBody(QuoteSchema),
   postQuotation
 );
+quotationRouter.get('/', getLastQuotationNumber);
 
 export { quotationRouter };

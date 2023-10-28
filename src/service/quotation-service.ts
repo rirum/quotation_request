@@ -19,6 +19,14 @@ async function postQuotation(
   }
 }
 
+async function getLastQuotationNumber() {
+  try {
+    return await quotationRepository.getLastQuotationNumber();
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
 export type QuoteType = {
   id: number;
   quotation_date: Date;
@@ -36,6 +44,7 @@ export type QuoteType = {
 
 const quotationService = {
   postQuotation,
+  getLastQuotationNumber,
 };
 
 export default quotationService;
