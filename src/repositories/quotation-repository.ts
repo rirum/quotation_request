@@ -7,8 +7,25 @@ async function postQuotation(data: Prisma.Quotation_requestCreateInput) {
   });
 }
 
+async function getLastQuotationNumber() {
+  return prisma.quotation_request.findFirst({
+    select: {
+      quotation_number: true,
+    },
+    orderBy: {
+      quotation_number: 'desc',
+    },
+    where: {
+      quotation_number: {
+        not: null,
+      },
+    },
+  });
+}
+
 const quotationRepository = {
   postQuotation,
+  getLastQuotationNumber,
 };
 
 export default quotationRepository;

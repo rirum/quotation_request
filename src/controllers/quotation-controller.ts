@@ -18,3 +18,13 @@ export async function postQuotation(req: AuthenticationRequest, res: Response) {
     console.log(error);
   }
 }
+
+export async function getLastQuotationNumber(req: Request, res: Response) {
+  try {
+    const lastQuotationNumber = await quotationService.getLastQuotationNumber();
+
+    return res.status(201).json(lastQuotationNumber);
+  } catch (error) {
+    res.status(500).json({ error: 'Erro ao obter último número de orçamento' });
+  }
+}

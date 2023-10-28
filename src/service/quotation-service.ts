@@ -1,4 +1,4 @@
-import { Prisma } from '@prisma/client';
+import { Prisma, QuotationStatus } from '@prisma/client';
 import quotationRepository from '../repositories/quotation-repository.ts';
 import prisma from '../configs/database-connection.ts';
 
@@ -19,6 +19,14 @@ async function postQuotation(
   }
 }
 
+async function getLastQuotationNumber() {
+  try {
+    return await quotationRepository.getLastQuotationNumber();
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
 export type QuoteType = {
   id: number;
   quotation_date: Date;
@@ -28,13 +36,15 @@ export type QuoteType = {
   client_address?: string;
   quotation_description?: string;
   project_preview?: string;
-  quotation_total_amount: number;
+  quotation_total_amount: string;
   quotation_method_payment?: string;
   userId: number;
+  status: QuotationStatus;
 };
 
 const quotationService = {
   postQuotation,
+  getLastQuotationNumber,
 };
 
 export default quotationService;
