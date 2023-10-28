@@ -5,7 +5,7 @@ export const QuoteSchema = Joi.object<QuoteType>({
   quotation_date: Joi.date(),
   quotation_number: Joi.number(),
   client_name: Joi.string().required(),
-  client_email: Joi.string().email(),
+  client_email: Joi.string(),
   client_address: Joi.string(),
   quotation_description: Joi.string(),
   project_preview: Joi.string(),
