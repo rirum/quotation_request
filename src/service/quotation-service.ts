@@ -27,6 +27,8 @@ async function getLastQuotationNumber() {
   }
 }
 
+// async function getAllQuotation
+
 export type QuoteType = {
   id: number;
   quotation_date: Date;

@@ -23,9 +23,14 @@ async function getLastQuotationNumber() {
   });
 }
 
+async function getAllQuotations() {
+  return prisma.quotation_request.findMany();
+}
+
 const quotationRepository = {
   postQuotation,
   getLastQuotationNumber,
+  getAllQuotations,
 };
 
 export default quotationRepository;
